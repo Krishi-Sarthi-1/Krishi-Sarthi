@@ -1,4 +1,4 @@
-# Team-Silent-Killer
+# Krishi Sarthi
 # Major Project
 ## Problem Statement: 
 > ####  (Ministry of Skill Development and Entrepreneurship)

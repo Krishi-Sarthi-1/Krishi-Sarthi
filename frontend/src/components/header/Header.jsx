@@ -7,8 +7,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getLogoutAction } from "../../redux/actions";
 import Cookies from "js-cookie";
 
-import Login from "../../pages/Login";
-import Register from "../../pages/Register";
+// import Login from "../../pages/Login";
+// import Register from "../../pages/Register";
+import Register from '../../pages/Auth/Register';
+import Login from '../../pages/Auth/Register';
+
 import { Link } from "react-router-dom";
 // import { Contact Us } from "../../pages/ContactUs/ContactUs";
 
@@ -49,7 +52,7 @@ const Header = () => {
             </li>
             <li
               className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
-              onClick={() => navigate("/dashboard")}
+              onClick={() => navigate("/shop")}
             >
               Dashboard
             </li>

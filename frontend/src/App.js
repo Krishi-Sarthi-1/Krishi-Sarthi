@@ -16,17 +16,19 @@ import SupportEngine from "./components/ChatSupport/SupportEngine/index";
 import Cookies from "js-cookie";
 
 //Pages
-import Register from "./pages/Register";
-import Login from "./pages/Login";
+// import Register from "./pages/Register";
+// import Login from "./pages/Login";
+import Register from './pages/Auth/Register';
+import Login from './pages/Auth/Login';
 import Help from "./pages/Help";
 import Header from "./components/header/Header";
 import FAQ from "./pages/FAQ";
 import PreHeader from "./components/preheader/PreHeader";
 import Footer from "./components/footer/Footer";
-import Dashboard from "./pages/dashboard/Dashboard";
+// import Dashboard from "./pages/dashboard/Dashboard";
 import AddProduct from "./pages/addProduct/AddProduct";
 import VerifyOTP from "./components/verify-otp";
-import Product from "./pages/product/Product";
+
 import PartnerDispute from "./pages/PartnerDispute";
 import CancellationForm from "./components/cancellationForm";
 import ContactUs from "./pages/ContactUs/ContactUs";
@@ -36,12 +38,36 @@ import CancellationPolicy from "./pages/cancellationPage/CancellationPolicy";
 import UpdateProfile from "./pages/updateProfile/index";
 import BookingHistory from "./pages/bookingHistory";
 import Feedback from "./pages/feedback/Feedback";
+import HomePage from "./pages/HomePage";
+
+import Policy from "./pages/Policy";
+import Dashboard from './pages/user/Dashboard';
+import PrivateRoute from './components/Routes/Private';
+import ForgotPassword from './pages/Auth/ForgotPassword';
+import AdminRoute from './components/Routes/Admin';
+import Admin from './pages/Admin/Admin';
+import CreateProduct from './pages/Admin/CreateProduct';
+import CreateCategory from './pages/Admin/CreateCategory';
+import Users from './pages/Admin/Users';
+import Profile from './pages/user/Profile';
+import Order from './pages/user/Order';
+import Products from './pages/Admin/Product';
+import UpdateProduct from './pages/Admin/UpdateProduct';
+import Search from './pages/Search';
+import ProductDetails from './pages/ProductDetails';
+import Categories from './pages/Categories';
+import CategoryProduct from './pages/CategoryProduct';
+import CartPage from './pages/CartPage';
+import AdminOrder from './pages/Admin/AdminOrder';
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+
 import SpeechRecognition, {
   useSpeechRecognition
 } from "react-speech-recognition";
 import EquipmentReport from "./pages/EquipmentReport";
 
-function App() {
+export default function App() {
   const authState = useSelector((state) => state.authReducer);
   const tokenState = useSelector((state) => state.tokenReducer);
   const dispatch = useDispatch();
@@ -75,7 +101,6 @@ function App() {
     <>
       {/*
       <p id="transcript">Transcript: {transcript}</p>
-
       <button onClick={SpeechRecognition.startListening}>Start</button> */}
       <PreHeader />
       <Header />
@@ -85,10 +110,9 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="verify-otp" element={<VerifyOTP />} />
         <Route path="help" element={<Help />} />
-        <Route path="Dashboard" element={<Dashboard />} />
+        {/* <Route path="Dashboard" element={<Dashboard />} /> */}
         <Route path="addProduct" element={<AddProduct />} />  
         <Route path="update-profile" element={<UpdateProfile />} />
-        <Route path="product/:id" element={<Product />} />
         <Route path="contact" element={<ContactUs />} />
         <Route path="bookingRequest/:id" element={<BookingRequest />} />
         <Route path="chat" element={<Chat />} />
@@ -100,6 +124,36 @@ function App() {
         <Route path="equipment-report/:id" element={<EquipmentReport />} />
         <Route path="feedback" element={<Feedback />} />
         <Route path="*" element={<div>Not Found</div>} />
+        <Route path="shop" element={< HomePage />} />
+
+
+        <Route path="/product/:slug" element={<ProductDetails />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/category/:slug" element={<CategoryProduct />} />
+        <Route path="/search" element={<Search />} />
+        <Route path='/dashboard' element={<PrivateRoute />}>
+          <Route path="user" element={<Dashboard />} />
+          <Route path="user/orders" element={<Order />} />
+          <Route path="user/profile" element={<Profile />} />
+        </Route>
+        <Route path='/dashboard' element={<AdminRoute />}>
+          <Route path="admin" element={<Admin />} />
+          <Route path="admin/create-category" element={<CreateCategory />} />
+          <Route path="admin/create-product" element={<CreateProduct />} />
+          <Route path="admin/product/:slug" element={<UpdateProduct />} />
+          <Route path="admin/products" element={<Products />} />
+          <Route path="admin/users" element={<Users />} />
+          <Route path="admin/orders" element={<AdminOrder />} />
+        </Route>
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/policy" element={<Policy />} />
+     
+      
       </Routes>
 
       <Footer />
@@ -107,5 +161,3 @@ function App() {
     </>
   );
 }
-
-export default App;

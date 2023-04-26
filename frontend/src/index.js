@@ -20,8 +20,15 @@ import { BrowserRouter } from "react-router-dom";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import { CookiesProvider } from "react-cookie";
+import { AuthProvider } from './context/auth';
+import { SearchProvider } from './context/search';
+import 'antd/dist/reset.css';
+import { CartProvider } from './context/cart';
 
 ReactDOM.render(
+  <AuthProvider>
+  <SearchProvider>
+    <CartProvider>
   <CookiesProvider>
     <Provider store={store}>
       <BrowserRouter>
@@ -30,6 +37,10 @@ ReactDOM.render(
         </React.StrictMode>
       </BrowserRouter>
     </Provider>
-  </CookiesProvider>,
+  </CookiesProvider>
+  </CartProvider>
+    </SearchProvider>
+  </AuthProvider>,
+ 
   document.getElementById("root")
 );

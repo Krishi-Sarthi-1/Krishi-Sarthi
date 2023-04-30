@@ -31,7 +31,7 @@ const Header = () => {
   return (
     <div className="h-16 inPhone">
       <div className="flex content-center">
-        <div className="flex items-center cursor-pointer ml-auto lg:ml-32">
+        <div className="flex items-center ml-auto cursor-pointer lg:ml-32">
           <img
             onClick={() => navigate("/")}
             src={logo}
@@ -42,7 +42,7 @@ const Header = () => {
             Krishi <br /> Sarthi
           </h3>
         </div>
-        <div className="flex-2 w-5/12 mx-auto">
+        <div className="w-5/12 mx-auto flex-2">
           <ul className="flex mt-4 items-around">
             <li
               onClick={() => navigate("/")}
@@ -54,11 +54,17 @@ const Header = () => {
               className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
               onClick={() => navigate("/shop")}
             >
-              Dashboard
+              Product
             </li>
+            {/* <li
+              className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
+              onClick={() => navigate("/categories")}
+            >
+              Category
+            </li> */}
             <li
               className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
-              onClick={() => navigate("/addProduct")}
+              onClick={() => navigate("/dashboard/Admin")}
             >
               Add Product
             </li>
@@ -69,30 +75,30 @@ const Header = () => {
               Help
             </li>
             <li>
-            
+
               <Link to="/contact">
-              <p className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5">
-                Contact Us
-              </p>
+                <p className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5">
+                  Contact Us
+                </p>
               </Link>{" "}
-        
+
             </li>
           </ul>
         </div>
         {!Cookies.get("refresh-token") ? (
           <div className="flex items-center">
-            <button
+            {/* <button
               onClick={() => setShowLogin(true)}
               className="hover:bg-[#219653] bg-white border-2 transition border-[#219653] text-[#219653] hover:text-white font-bold py-1 px-8 rounded mx-2"
             >
               Login
-            </button>
-            <button
+            </button> */}
+            {/* <button
               onClick={() => setShowRegister(true)}
               className="hover:bg-[#219653] bg-white border-2 transition border-[#219653] text-[#219653] hover:text-white font-bold py-1 px-8 rounded mx-4"
             >
               Sign Up
-            </button>
+            </button> */}
           </div>
         ) : (
           <div
@@ -100,9 +106,9 @@ const Header = () => {
             onMouseLeave={(prev) => setShow(false)}
             className="my-auto"
           >
-            <div className="bg-gray-200 relative rounded-full py-1 px-4 my-auto text-gray-700 flex items-center z-40 hover:bg-gray-300 mr-5 cursor-pointer">
+            <div className="relative z-40 flex items-center px-4 py-1 my-auto mr-5 text-gray-700 bg-gray-200 rounded-full cursor-pointer hover:bg-gray-300">
               <img
-                className="rounded-full w-8 h-8 mr-3"
+                className="w-8 h-8 mr-3 rounded-full"
                 src={userIcon}
                 alt="profile_pic"
               />
@@ -114,11 +120,11 @@ const Header = () => {
               <div
                 onMouseOver={() => setShow(true)}
                 onMouseLeave={() => setShow(false)}
-                className="absolute bg-white rounded-lg z-40 border-2 border-slate-400 p-1"
+                className="absolute z-40 p-1 bg-white border-2 rounded-lg border-slate-400"
               >
                 <p
                   onClick={() => navigate("/update-profile")}
-                  className="px-5 text-gray-600 py-2 bg-white cursor-pointer border-solid border-b border-slate-400 hover:bg-gray-200"
+                  className="px-5 py-2 text-gray-600 bg-white border-b border-solid cursor-pointer border-slate-400 hover:bg-gray-200"
                 >
                   Profile
                 </p>
@@ -130,7 +136,7 @@ const Header = () => {
                     dispatch(getLogoutAction());
                     navigate("/login");
                   }}
-                  className="px-5 text-gray-600 py-2 bg-white cursor-pointer border-solid  border-slate-400 hover:bg-gray-200"
+                  className="px-5 py-2 text-gray-600 bg-white border-solid cursor-pointer border-slate-400 hover:bg-gray-200"
                 >
                   Logout
                 </p>

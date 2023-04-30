@@ -31,9 +31,9 @@ const CategoryProduct = () => {
                 <h6 className='text-center'>{products?.length} result found</h6>
                 <div className="row">
                     <div className="col-md-9 offset-1">
-                        <div className="d-flex flex-wrap">
+                        <div className="flex-wrap d-flex">
                             {products?.map((p) => (
-                                <div className="card m-2" key={p._id}>
+                                <div className="m-2 card" key={p._id}>
                                     <img
                                         src={`http://localhost:8000/api/v1/product/product-photo/${p._id}`}
                                         className="card-img-top"
@@ -77,7 +77,7 @@ const CategoryProduct = () => {
                                 </div>
                             ))}
                         </div>
-                        {/* <div className="m-2 p-3">
+                        {/* <div className="p-3 m-2">
             {products && products.length < total && (
               <button
                 className="btn btn-warning"

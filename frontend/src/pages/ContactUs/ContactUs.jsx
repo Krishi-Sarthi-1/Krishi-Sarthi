@@ -15,16 +15,16 @@ const ContactUs = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         emailjs.sendForm(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, formRef.current, process.env.REACT_APP_USER_ID)
-        .then((result) => {
-            console.log(result.text);
-            setDone(true);
-            setName('');setEmail('');setMessage('');setSubject('');setPhone('');
-            setTimeout(() => {
-                setDone(false);
-            }, 3000);
-        }, (error) => {
-            console.log(error.text);
-        });
+            .then((result) => {
+                console.log(result.text);
+                setDone(true);
+                setName(''); setEmail(''); setMessage(''); setSubject(''); setPhone('');
+                setTimeout(() => {
+                    setDone(false);
+                }, 3000);
+            }, (error) => {
+                console.log(error.text);
+            });
     }
 
     return (
@@ -62,12 +62,12 @@ const ContactUs = () => {
                                 <textarea rows={3} cols={10} type="text" name="phone_number" id="phone_number" autocomplete="given-number" class="mt-1 px-2 py-1 focus:ring-indigo-500 border border-green-400 outline-none block w-full shadow-sm sm:text-sm rounded-md" />
                             </div>
                             {done && (
-                                <h1 style={{color: '#59b256', fontSize: '18px', marginTop: '12px'}}>Thank you, Your email has been sent</h1>
+                                <h1 style={{ color: '#59b256', fontSize: '18px', marginTop: '12px' }}>Thank you, Your email has been sent</h1>
                             )}
                             <button className="mt-7 ml-auto bg-darkgreen mr-16 hover:bg-green-700 text-white font-bold py-2 px-8 rounded-full">
                                 Send Message
                             </button>
-                            
+
                         </div>
                     </form>
                 </div>

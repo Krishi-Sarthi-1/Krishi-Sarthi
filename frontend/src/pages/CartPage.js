@@ -21,7 +21,7 @@ const CartPage = () => {
             cart?.map(item => { total = total + item.price })
             return total.toLocaleString('en-US', {
                 style: 'currency',
-                currency: 'USD'
+                currency: 'INR'
             })
         } catch (error) {
             console.log(error)
@@ -76,7 +76,7 @@ const CartPage = () => {
             <div className='container'>
                 <div className='row'>
                     <div className='col-md-12'>
-                        <h1 className='text-center bg-light p-2'>
+                        <h1 className='p-2 text-center bg-light'>
                             {`Hello ${auth?.token && auth?.user?.name}`}
                         </h1>
                         <h4>
@@ -96,14 +96,14 @@ const CartPage = () => {
                                     <div className='col-md-8'>
                                         <p>{p.name}</p>
                                         <p>{p.description.substring(0, 30)}</p>
-                                        <p> Price: $ {p.price}</p>
+                                        <p> Price: {p.price}</p>
                                         <button className='btn btn-danger' onClick={() => removeCartItem(p._id)}>Remove</button>
                                     </div>
                                 </div>
                             ))
                         }
                     </div>
-                    <div className='col-md-3 text-center'>
+                    <div className='text-center col-md-3'>
                         <h2>Cart summary</h2>
                         <p>Total | Checkout | Payment</p>
                         <hr />

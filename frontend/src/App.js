@@ -103,7 +103,7 @@ export default function App() {
       <p id="transcript">Transcript: {transcript}</p>
       <button onClick={SpeechRecognition.startListening}>Start</button> */}
       <PreHeader />
-      <Header />
+    {/* <Header />  */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />

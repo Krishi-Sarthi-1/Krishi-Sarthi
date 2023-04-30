@@ -28,7 +28,10 @@ const Header = () => {
                         <span className="navbar-toggler-icon" />
                     </button>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                        <Link to="/" className="navbar-brand">KRISHI-SARTHI</Link>
+                        
+                        <h3 className="text-md font-bold opacity-[.70]">
+                         Krishi <br /> Sarthi
+                         </h3>
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <SearchInput />
                             <li className="nav-item">

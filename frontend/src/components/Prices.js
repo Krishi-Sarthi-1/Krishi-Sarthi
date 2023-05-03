@@ -1,7 +1,7 @@
 export const Prices = [
     {
         _id: 0,
-        name: '50 to 5000',
+        name: '50 to 500',
         array: [50, 500]
     },
     {

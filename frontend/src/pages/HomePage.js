@@ -106,7 +106,7 @@ const HomePage = () => {
 
     return (
         <Layout title={'Shop Now'}>
-            <div className='row mt-3'>
+            <div className='mt-3 row'>
                 <div className='col-md-2'>
                     <h4 className='text-center'>Filter By Category</h4>
                     <div className='d-flex flex-column'>
@@ -137,14 +137,14 @@ const HomePage = () => {
                 </div>
                 <div className='col-md-9'>
                     <h1 className='text-center'>All Products</h1>
-                    <div className='d-flex flex-wrap'>
+                    <div className='flex-wrap d-flex'>
                         {products?.map(p => (
-                            <div className="card m-2" style={{ width: '18rem' }}>
+                            <div className="m-2 card" style={{ width: '18rem' }}>
                                 <img src={`http://localhost:8000/api/v1/product/product-photo/${p._id}`} className="card-img-top" alt={p.name} />
                                 <div className="card-body">
                                     <h5 className="card-title">{p.name}</h5>
                                     <p className="card-text">{p.description.substring(0, 25)}...</p>
-                                    <p className="card-text">$ {p.price}</p>
+                                    <p className="card-text"> {p.price}</p>
                                     <button class="btn btn-primary m-1" onClick={() => navigate(`/Product/${p.slug}`)}>More details</button>
                                     <button class="btn btn-secondary m-1"
                                         onClick={() => {
@@ -159,7 +159,7 @@ const HomePage = () => {
                             </div>
                         ))}
                     </div>
-                    <div className='m-2 p-3'>
+                    <div className='p-3 m-2'>
                         {products && products.length < total && (
                             <button
                                 className='btn btn-warning'

@@ -22,15 +22,15 @@ const Product = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-      const getEquipment = async () => {
-        const { data } = await getEquip(params.id);
-        setEquipment(data);
-        // console.log(data);
-      }
-      getEquipment();
+        const getEquipment = async () => {
+            const { data } = await getEquip(params.id);
+            setEquipment(data);
+            // console.log(data);
+        }
+        getEquipment();
     }, [params.id])
     console.log(equipment);
-    
+
 
     const handleSelect = (ranges) => {
         setStartDate(ranges.selection.startDate);
@@ -60,10 +60,10 @@ const Product = () => {
         await createBooking(equipment?.id, formattedStartDate, formattedEndDate, "22:22", "01:01");
         // console.log(data);
         navigate('/booking-history');
-        
+
     }
-    var getDaysArray = function(start, end) {
-        for(var arr=[],dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
+    var getDaysArray = function (start, end) {
+        for (var arr = [], dt = new Date(start); dt <= new Date(end); dt.setDate(dt.getDate() + 1)) {
             arr.push(new Date(dt));
         }
         return arr;
@@ -71,17 +71,17 @@ const Product = () => {
     var arr = [];
 
     const fetchInvalid = () => {
-      const getBookingVadidity = async () => {
-        const headers = {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${Cookies.get('access-token')}`
-        };
-        const { data } = await instance.get(`/api/booking/?search=${equipment?.title}&ordering=start_date`, { headers });
-        console.log(data, 'invalid dates');
-        setInvalidDate(data);
-      }
-      getBookingVadidity();
-      
+        const getBookingVadidity = async () => {
+            const headers = {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${Cookies.get('access-token')}`
+            };
+            const { data } = await instance.get(`/api/booking/?search=${equipment?.title}&ordering=start_date`, { headers });
+            console.log(data, 'invalid dates');
+            setInvalidDate(data);
+        }
+        getBookingVadidity();
+
     };
 
     invalidDate?.map(booking => (
@@ -89,15 +89,15 @@ const Product = () => {
             arr.push(item)
         ))
 
-      ))
+    ))
 
     const redirect = () => {
         window.location.href = 'http://localhost:3001/login';
         return null;
     }
 
-    
-    
+
+
 
     return (
         <div className=''>
@@ -113,22 +113,22 @@ const Product = () => {
                     dynamicHeight="100%"
                 >
                     <div className="relative">
-                        <img style={{ height: '300px', width: '800px', objectFit: 'contain'}} src={equipment?.image_1} alt='' />
+                        <img style={{ height: '300px', width: '800px', objectFit: 'contain' }} src={equipment?.image_1} alt='' />
                     </div>
                     <div className="relative">
-                        {equipment?.image_2 != null && <img style={{ height: '300px', width: '800px', objectFit: 'contain'}} src={equipment?.image_2} alt='' /> }
+                        {equipment?.image_2 != null && <img style={{ height: '300px', width: '800px', objectFit: 'contain' }} src={equipment?.image_2} alt='' />}
                     </div>
                     <div className="relative">
-                        {equipment?.image_3 != null && <img style={{ height: '300px', width: '800px', objectFit: 'contain'}} src={equipment?.image_3} alt='' /> }
+                        {equipment?.image_3 != null && <img style={{ height: '300px', width: '800px', objectFit: 'contain' }} src={equipment?.image_3} alt='' />}
                     </div>
                     <div className="relative">
-                        {equipment?.image_4 != null && <img style={{ height: '300px', width: '800px', objectFit: 'contain'}} src={equipment?.image_4} alt='' /> }
+                        {equipment?.image_4 != null && <img style={{ height: '300px', width: '800px', objectFit: 'contain' }} src={equipment?.image_4} alt='' />}
                     </div>
                     {
-                        equipment?.image_5 != null && 
-                    <div className="relative">
-                        {<img style={{ height: '300px', width: '800px', objectFit: 'contain'}} src={equipment?.image_5} alt='' /> }
-                    </div>
+                        equipment?.image_5 != null &&
+                        <div className="relative">
+                            {<img style={{ height: '300px', width: '800px', objectFit: 'contain' }} src={equipment?.image_5} alt='' />}
+                        </div>
                     }
                     {/* <div>
                         <img style={{ height: '300px', objectFit: 'cover'}} src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt='' />
@@ -160,11 +160,11 @@ const Product = () => {
                             <h1 className='text-sm text-gray-500 font-semibold'>{equipment?.manufacturer}</h1>
                         </div>
                         <div>
-                        <h3 className='text-md text-gray-500 font-bold'>Model</h3>
+                            <h3 className='text-md text-gray-500 font-bold'>Model</h3>
                             <h1 className='text-sm text-gray-500 font-semibold'>{equipment?.model}</h1>
                         </div>
                         <div>
-                        <h3 className='text-md text-gray-500 font-bold'>Manufacturing Year</h3>
+                            <h3 className='text-md text-gray-500 font-bold'>Manufacturing Year</h3>
                             <h1 className='text-sm text-gray-500 font-semibold'>{equipment?.manufacturing_year}</h1>
                         </div>
                     </div>
@@ -204,8 +204,8 @@ const Product = () => {
                 <div className='flex-1 w-32'>
                     <div className='border p-8 m-10'>
                         <h1 className='text-right text-lg font-bold border-b-2 pb-3'>Rs {equipment?.daily_rental} per day</h1>
-                        <button onClick={() => {setVisible(!visible);fetchInvalid()}} className='px-3 py-1 border my-4 w-full text-md font-semibold text-gray-800 cursor-pointer'>Check Availability <i className="pl-2 fa-solid fa-angles-down"></i></button>
-                        <div style={{ display: !visible &&  'none' }}>
+                        <button onClick={() => { setVisible(!visible); fetchInvalid() }} className='px-3 py-1 border my-4 w-full text-md font-semibold text-gray-800 cursor-pointer'>Check Availability <i className="pl-2 fa-solid fa-angles-down"></i></button>
+                        <div style={{ display: !visible && 'none' }}>
                             <DateRangePicker style={{ height: '300px', width: '280px' }}
                                 ranges={[selectionRange]}
                                 minDate={new Date()}
@@ -213,7 +213,7 @@ const Product = () => {
                                 disabledDates={arr}
                                 rangeColors={["#68AC5D"]}
                                 onChange={handleSelect}
-                                // maxDate={new Date()}
+                            // maxDate={new Date()}
                             />
                         </div>
                         {
@@ -227,13 +227,13 @@ const Product = () => {
                                 </button>
                             )
                         }
-                        
+
 
                         <p className='text-md font-bold text-gray-500 text-center pt-4 pb-8 border-b-2'>You won’t be charged yet</p>
 
                         {
                             Cookies.get('access-token') ? (
-                                <button onClick={()=>redirect()} className="bg-blue-500 hover:bg-blue-400 mt-8 text-white w-full font-semibold py-1 px-8 rounded">
+                                <button onClick={() => redirect()} className="bg-blue-500 hover:bg-blue-400 mt-8 text-white w-full font-semibold py-1 px-8 rounded">
                                     Chat now <i className="pl-4 fa-solid fa-comment"></i>
                                 </button>
                             ) : (
@@ -241,8 +241,8 @@ const Product = () => {
                                     Chat now <i className="pl-4 fa-solid fa-comment"></i>
                                 </button>
                             )
-                        }                            
-                        
+                        }
+
                     </div>
                     <p className='text-center'><i className="pr-2 text-red-500 fa-solid fa-flag"></i> <a className='text-red-500 font-semibold text-md underline-offset-2' onClick={() => navigate(`/equipment-report/${equipment?.id}`)}>Report this equipment</a></p>
                 </div>

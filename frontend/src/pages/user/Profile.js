@@ -50,7 +50,7 @@ const Profile = () => {
     }
     return (
         <Layout title={'Your Profile'}>
-            <div className='container-flui p-3 m-3'>
+            <div className='p-3 m-3 container-flui'>
                 <div className='row'>
                     <div className='col-md-3'>
                         <UserMenu />

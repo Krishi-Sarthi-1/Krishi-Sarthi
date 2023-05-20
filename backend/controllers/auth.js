@@ -9,7 +9,7 @@ var transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     auth: {
         user: 'zanitroy567.ss@gmail.com',
-        pass: 'tucuvbksnfmvsial'
+        pass: 'hvmtlafhotgajbjo'
     }
 });
 export const registerController = async (req, res) => {

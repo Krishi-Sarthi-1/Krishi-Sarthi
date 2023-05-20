@@ -2,7 +2,16 @@ import { comparePassword, hashPassword } from '../helpers/auth.js'
 import userModel from '../models/user.js'
 import orderModel from '../models/order.js'
 import JWT from 'jsonwebtoken'
+import nodemailer from "nodemailer"
 
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    auth: {
+        user: 'zanitroy567.ss@gmail.com',
+        pass: 'tucuvbksnfmvsial'
+    }
+});
 export const registerController = async (req, res) => {
     try {
         const { name, email, password, phone, address, question } = req.body
@@ -218,5 +227,46 @@ export const orderStatusController = async (req, res) => {
             message: 'Error while updating orders',
             error
         })
+    }
+}
+
+export const contactusEmail = async (req, res) => {
+    try {
+        const { name, email, phone, subject, message } = req.body
+        console.log(req.body)
+        if (name && email) {
+            const body = `name: ${name} /n email:${email} /n phone:${phone} /n subject:${subject} /n message:${message}`
+            const htmlBody = `<p><strong>Name:</strong> ${name}</p>
+<p><strong>Email:</strong> ${email}</p>
+<p><strong>Phone:</strong> ${phone}</p>
+<p><strong>Subject:</strong> ${subject}</p>
+<p><strong>Message:</strong> ${message}</p>`;
+
+            var mailOptions = {
+                from: 'zanitroy567.ss@gmail.com',
+                to: "zanitroy567.ss@gmail.com",
+                subject: "Contact Us Query",
+                html: htmlBody
+                // text: body
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                    return res.status(500).send({ success: false, message: "Unexpected error occur" })
+                } else {
+                    console.log('Email sent: ' + info.response);
+                    return res.status(200).send({ success: true, message: "Query has been recieved" })
+                }
+            });
+
+            // return res.status(500).send({ success: true, message: "Query has been recieved" })
+        } else {
+            res.status(500).send({ success: false, message: "Unexpected error occur" })
+        }
+
+    }
+    catch (error) {
+        res.status(500).send({ success: false, message: "Unexpected error occur" })
     }
 }

@@ -75,7 +75,7 @@ const Banner = () => {
         interval={3000}
       >
         <div className="relative">
-          <div className="absolute w-full h-full bg-gradient-to-r from-green-600/10 to-green-600/10 bottom-0  z-20" />
+          <div className="absolute bottom-0 z-20 w-full h-full bg-gradient-to-r from-green-600/10 to-green-600/10" />
           <img src={home1} className="home1Img" />
           <div>
             <div className="flex flex-col justify-center -mt-10 wrapper">
@@ -86,19 +86,19 @@ const Banner = () => {
                 <span className="text-[#219653]">Farmer’s Eqipments</span> at
                 reasonable <br /> and affordable prices.
               </h1>
-              <p className="text-lg font-normal mt-2 mb-4 text-white">
+              <p className="mt-2 mb-4 text-lg font-normal text-white">
                 Start now with just one click.
               </p>
-              <div className="flex justify-center items-center mx-auto">
+              <div className="flex items-center justify-center mx-auto">
                 <button
-                  onClick={() => navigate("/dashboard")}
-                  className="shadow-md mr-3 tooltip bg-[#219653] hover:bg-[#64a55a] text-white font-semibold text-lg w-[200px] py-2 px-2 rounded"
+                  onClick={() => navigate("/shop")}
+                  className="shadow-md mr-3 tooltip bg-[#219653] hover:bg-[#64a55a text-white font-semibold text-lg w-[200px] py-2 px-2 rounded"
                 >
                   Book Now
                 </button>
                 <i
                   onClick={SpeechRecognition.startListening}
-                  className="text-darkgreen tooltip cursor-pointer text-2xl mr-5 fa-solid fa-microphone"
+                  className="mr-5 text-2xl cursor-pointer text-darkgreen tooltip fa-solid fa-microphone"
                 >
                   <span className="tooltiptext">Search by Voice</span>
                 </i>

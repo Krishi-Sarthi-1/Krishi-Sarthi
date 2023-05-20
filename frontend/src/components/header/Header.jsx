@@ -54,7 +54,7 @@ const Header = () => {
               className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
               onClick={() => navigate("/shop")}
             >
-              Product
+              Dashboard
             </li>
             {/* <li
               className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"

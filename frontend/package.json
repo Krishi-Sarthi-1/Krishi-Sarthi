@@ -1,5 +1,5 @@
 {
-  "name": "Krishisarthi",
+  "name": "krishisarthi",
   "proxy": "http://localhost:8000/",
   "version": "0.1.0",
   "private": true,
@@ -66,5 +66,10 @@
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.6",
     "tailwindcss": "^3.0.22"
-  }
+  },
+  "description": "> ####  (Ministry of Skill Development and Entrepreneurship)\r > At a given time farmer equipment are idle during non-seasons. A platform that allows farmers to rent farming equipment for less during the off-season. A simple aggregation platform with call center support can function as booking equipment’s will help farmers make additional income.",
+  "main": "tailwind.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

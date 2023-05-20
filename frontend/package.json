@@ -30,7 +30,7 @@
     "react-redux": "^7.2.6",
     "react-responsive-carousel": "^3.2.22",
     "react-router-dom": "^6.10.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-speech-recognition": "^3.9.0",
     "react-sticky-el": "^2.0.9",
     "react-toastify": "^9.1.2",

@@ -17,9 +17,10 @@ const HomePage = () => {
     const [total, setTotal] = useState(0)
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
-     const navigate = useNavigate()
-     const [cart, setCart] = useCart()
-
+    const navigate = useNavigate()
+    const [cart, setCart] = useCart()
+    const [latitude, setLatitude] = useState(0)
+    const [longitude, setLongitude] = useState(0)
 
     const getAllCategories = async () => {
         try {
@@ -33,14 +34,41 @@ const HomePage = () => {
         }
     }
     useEffect(() => {
-        getAllCategories()
-        getTotal()
+        const handleGeolocation = (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+
+            if (lat && lng) {
+                setLatitude(lat);
+                setLongitude(lng);
+            }
+            console.log("Latitude:", lat);
+            console.log("Longitude:", lng);
+        };
+
+        const handleError = (error) => {
+            console.error("Error getting geolocation:", error);
+        };
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(handleGeolocation, handleError);
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+        }
+
     }, [])
 
+    useEffect(() => {
+
+        if (latitude !== 0 && longitude !== 0) {
+            getAllCategories()
+            getTotal()
+        }
+    }, [latitude, longitude])
     const getAllProducts = async () => {
         try {
             setLoading(true)
-            const { data } = await axios.get(`http://localhost:8000/api/v1/product/product-list/${page}`)
+            const { data } = await axios.get(`http://localhost:8000/api/v1/product/product-list/${page}?lat=${latitude}&long=${longitude}`)
             setLoading(false)
             setProducts(data.products)
         } catch (error) {
@@ -51,7 +79,7 @@ const HomePage = () => {
 
     const getTotal = async () => {
         try {
-            const { data } = await axios.get(`http://localhost:8000/api/v1/product/product-count`)
+            const { data } = await axios.get(`http://localhost:8000/api/v1/product/product-count?lat=${latitude}&long=${longitude}`)
             setTotal(data?.total)
         } catch (error) {
             console.log(error)
@@ -66,7 +94,7 @@ const HomePage = () => {
     const loadMore = async () => {
         try {
             setLoading(true)
-            const { data } = await axios.get(`http://localhost:8000/api/v1/product/product-list/${page}`)
+            const { data } = await axios.get(`http://localhost:8000/api/v1/product/product-list/${page}?lat=${latitude}&long=${longitude}`)
             setLoading(false)
             setProducts([...products, ...data?.products])
         } catch (error) {
@@ -86,9 +114,9 @@ const HomePage = () => {
     }
 
     useEffect(() => {
-        if (!checked.length || !radio.length)
+        if ((!checked.length || !radio.length) && (latitude !== 0 && longitude !== 0))
             getAllProducts()
-    }, [checked.length, radio.length])
+    }, [checked.length, radio.length, latitude, longitude])
 
     useEffect(() => {
         if (checked.length || radio.length)

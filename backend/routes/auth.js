@@ -1,8 +1,10 @@
 import express from 'express'
-import { forgotPasswordController, getAllOrdersController, getOrdersController, loginController, orderStatusController, registerController, testController, updateProfileController } from '../controllers/auth.js'
+import { forgotPasswordController, getAllOrdersController, getOrdersController, loginController, orderStatusController, registerController, testController, updateProfileController, contactusEmail } from '../controllers/auth.js'
 import { isAdmin, requireSignIn } from '../middlewares/auth.js'
 
 const router = express.Router()
+
+router.post('/contact-us', contactusEmail)
 
 router.post('/register', registerController)
 

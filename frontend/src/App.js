@@ -25,7 +25,7 @@ import Header from "./components/header/Header";
 import FAQ from "./pages/FAQ";
 import PreHeader from "./components/preheader/PreHeader";
 import Footer from "./components/footer/Footer";
-// import Dashboard from "./pages/dashboard/Dashboard";
+// import Dashboard from "./pages/dashboard/Dashboard ";
 import AddProduct from "./pages/addProduct/AddProduct";
 import VerifyOTP from "./components/verify-otp";
 
@@ -103,7 +103,7 @@ export default function App() {
       <p id="transcript">Transcript: {transcript}</p>
       <button onClick={SpeechRecognition.startListening}>Start</button> */}
       <PreHeader />
-    {/* <Header />  */}
+      {/* <Header />  */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
@@ -111,7 +111,7 @@ export default function App() {
         <Route path="verify-otp" element={<VerifyOTP />} />
         <Route path="help" element={<Help />} />
         {/* <Route path="Dashboard" element={<Dashboard />} /> */}
-        <Route path="addProduct" element={<AddProduct />} />  
+        <Route path="addProduct" element={<AddProduct />} />
         <Route path="update-profile" element={<UpdateProfile />} />
         <Route path="contact" element={<ContactUs />} />
         <Route path="bookingRequest/:id" element={<BookingRequest />} />
@@ -148,12 +148,12 @@ export default function App() {
         </Route>
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        
+
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
-     
-      
+
+
       </Routes>
 
       <Footer />

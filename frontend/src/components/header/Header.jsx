@@ -29,7 +29,7 @@ const Header = () => {
   const [showRegister, setShowRegister] = useState(false);
 
   return (
-    <div className="h-16 inPhone">
+    <div className="h-16 inPhone mb-8">
       <div className="flex content-center">
         <div className="flex items-center ml-auto cursor-pointer lg:ml-32">
           <img
@@ -54,7 +54,7 @@ const Header = () => {
               className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
               onClick={() => navigate("/shop")}
             >
-              Dashboard
+              Products
             </li>
             {/* <li
               className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"

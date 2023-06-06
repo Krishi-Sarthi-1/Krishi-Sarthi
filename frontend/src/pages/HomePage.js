@@ -172,7 +172,7 @@ const HomePage = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">{p.name}</h5>
                                     <p className="card-text">{p.description.substring(0, 25)}...</p>
-                                    <p className="card-text"> {p.price}</p>
+                                    <p className="card-text"><i class="fa fa-inr"></i> {p.price}</p>
                                     <button class="btn btn-primary m-1" onClick={() => navigate(`/Product/${p.slug}`)}>More details</button>
                                     <button class="btn btn-secondary m-1"
                                         onClick={() => {

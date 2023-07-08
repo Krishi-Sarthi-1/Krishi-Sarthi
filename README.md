@@ -45,9 +45,13 @@
 $ git clone https:
 - Install the Dependencies from `npm`
 ```
+
 $ npm i
 ```
 - Run the Server and see the demo at [http://localhost:3000/](http://localhost:3000/)
 ```
 $ npm start
 ```
+[FINAL PROJECT PRESENTATION.pdf](https://github.com/Krishi-Sarthi-1/Krishi-Sarthi/files/11990905/FINAL.PROJECT.PRESENTATION.pdf)
+
+
